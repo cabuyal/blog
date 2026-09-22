@@ -1,0 +1,61 @@
+# baseURL is overridden at deploy time by the GitHub Actions workflow
+# (.github/workflows/hugo.yml), so this only matters for local builds.
+baseURL = "https://cabuyal.github.io/blog/"
+languageCode = "en-us"
+title = "Bernardo Alfaro"
+theme = "PaperMod"
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  env = "production"
+  description = "Notes on technology, hardware hacking and cybersecurity."
+  author = "Bernardo Alfaro"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = false
+
+  [params.homeInfoParams]
+    Title = "Hey, terminal dwellers 👋"
+    Content = "Welcome to my little corner of the internet.\n\nI'm documenting my journey into cybersecurity; the things I learn, the stuff I break, and the rabbit holes I inevitably fall into. Still learning. Still experimenting. Still breaking things. Hopefully fixing most of them."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/cabuyal"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/bernardoalfaro/"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "index.xml"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup.goldmark.renderer]
+  unsafe = false
+[markup.highlight]
+  noClasses = false

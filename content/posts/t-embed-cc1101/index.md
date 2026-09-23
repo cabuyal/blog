@@ -54,7 +54,7 @@ in the 300–928 MHz band, and the T-Embed can scan those ranges, capture a sign
 ![The RF band selector: 300–348, 387–464 and 779–928 MHz, plus fixed and all-range modes](images/rf-ranges.jpg)
 
 For my first test I used the **remote for my parents' garage**. You drop into *Scan/Copy*, pick a
-frequency range (in my experience, is best to use a fixed frequency), and hold the remote near the device while pressing its
+frequency range (in my experience, it's best to use a fixed frequency), and hold the remote near the device while pressing its
 button. The T-Embed listens for a signal to lock onto and record.
 
 ![RF Scan Copy mode listening while I press the remote](images/rf-capture.gif)

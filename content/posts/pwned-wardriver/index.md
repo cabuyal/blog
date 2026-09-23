@@ -1,6 +1,6 @@
 ---
 title: "Finishing What I Started: Building an ESP8266 Wardriver a Year After PWNED 0x08"
-date: 2026-09-22
+date: 2026-09-01
 draft: false
 tags: ["wardriving", "esp8266", "wifi", "rf", "hardware", "ai-assisted", "pwned"]
 description: "A conference workshop left unfinished, a year-long pause, a stubborn GPS, and one feature I wanted badly enough to write myself."
@@ -21,7 +21,7 @@ screen.
 I walked out of that workshop with a bag of parts and a project I hadn't finished.
 
 This post covers how I picked it back up almost a year later, what broke along the way, and the
-feature I added because the original project didn't have it.
+feature I wanted to add to the original project.
 
 ---
 
@@ -42,13 +42,18 @@ sniffing.
 
 ## Why it didn't get finished at the conference
 
-My laptop gave me trouble during the workshop. I couldn't get the toolchain working, so I never
-flashed the board. While everyone else was watching their screens fill up with networks, I was still
-fighting my setup. I took the parts home, and they sat in a box for most of a year.
+My laptop gave me trouble during the workshop. I had prepared everything the day before: everything I 
+needed to work on the project was installed, and everything was up to date. But when the time came, it 
+would only open the old version of the required IDE, and no one could get it to open the correct one. 
+I spent the entire session troubleshooting, but I couldn't get the toolchain working, so I never flashed the board. 
+While everyone else was watching their screens fill up with networks, I was still fighting with my setup.
+
+I took the parts home, and they ended up sitting in a box for most of a year.
 
 ## Picking it back up, with an AI pair
 
-When I came back to it, I did two things differently.
+With PWNED coming up again this year -and partly because I bought a T-Embed CC1101 Plus to experiment with-, 
+I got excited and decided to pick up the wardriving project again. When I came back to it, I did two things differently.
 
 **1. I ditched the Arduino IDE for VS Code + PlatformIO.** The repo's README is written for the
 Arduino IDE, but I wanted builds inside my editor. PlatformIO also makes the build reproducible,
@@ -112,8 +117,7 @@ the bus and prints what answers. The result was always the same: *"No I2C device
 
 That result ruled out a large group of causes. The problem wasn't the display library, the address
 (`0x3C`) or the code. If nothing answers on the bus at all, the problem is physical. I also had a
-theory that the stacked SD shield might not expose D1/D2 (the I2C pins) properly. A photo review
-couldn't confirm or rule that out.
+theory that the stacked SD shield might not expose D1/D2 (the I2C pins) properly. 
 
 So I **took the wiring apart and rewired everything from scratch.** The next scan printed
 `I2C device found at 0x3C`, and the boot logo appeared. The cause was a bad or missing connection
@@ -253,7 +257,7 @@ made the feature worth building.
   neighborhood and made the design calls (like refusing to guess "WEP"). The assistant sped up
   reading, explaining and writing code.
 - **Build the feature you actually want.** The most useful part of this device is now the part that
-  wasn't in the original repo.
+  wasn't or maybe wasn't working in the original repo.
 
 Thanks to the PWNED 0x08 organizers and the workshop instructor for the project that started all of
 this. See you at the next one, hopefully with a working laptop this time.

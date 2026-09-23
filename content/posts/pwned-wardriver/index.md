@@ -42,18 +42,15 @@ sniffing.
 
 ## Why it didn't get finished at the conference
 
-My laptop gave me trouble during the workshop. I had prepared everything the day before: everything I 
-needed to work on the project was installed, and everything was up to date. But when the time came, it 
-would only open the old version of the required IDE, and no one could get it to open the correct one. 
-I spent the entire session troubleshooting, but I couldn't get the toolchain working, so I never flashed the board. 
+My laptop gave me trouble during the workshop. I had prepared everything the day before; everything I 
+needed to work on the project was installed, and everything was up to date. But as soon as we sat down and the workshop began, the only IDE that would open, was the 'default' version -the old one that came with the operating system and had no plugins available-. All the necessary plugins had been installed on the newer version. No one was able to get it to open the correct one. I spent the entire session troubleshooting, so I never flashed the board. 
 While everyone else was watching their screens fill up with networks, I was still fighting with my setup.
-
 I took the parts home, and they ended up sitting in a box for most of a year.
 
 ## Picking it back up, with an AI pair
 
-With PWNED coming up again this year -and partly because I bought a T-Embed CC1101 Plus to experiment with-, 
-I got excited and decided to pick up the wardriving project again. When I came back to it, I did two things differently.
+With PWNED coming up again this year -and partly because I bought a T-Embed CC1101 Plus to experiment with (more on this
+on an upcoming post)-, I got excited and decided to pick up the wardriving project again. When I came back to it, I did two things differently.
 
 **1. I ditched the Arduino IDE for VS Code + PlatformIO.** The repo's README is written for the
 Arduino IDE, but I wanted builds inside my editor. PlatformIO also makes the build reproducible,
@@ -257,7 +254,7 @@ made the feature worth building.
   neighborhood and made the design calls (like refusing to guess "WEP"). The assistant sped up
   reading, explaining and writing code.
 - **Build the feature you actually want.** The most useful part of this device is now the part that
-  wasn't, or maybe wasn't working in the original repo.
+  wasn't -or maybe just wasn't working-, in the original repo.
 
 Thanks to the PWNED 0x08 organizers and the workshop instructor for the project that started all of
 this. See you at the next one, hopefully with a working laptop this time.

@@ -30,12 +30,12 @@ Let me explain that last one, because it's the reason I reached for my wallet.
 ## Why signal copying is actually useful to me
 
 At my parents' house I have a remote for the garage. Fine. But they also own a property up in the
-mountains, behind a **community gate** that sits before their own gate — and I don't have a remote
+mountains, behind a **community gate** that sits before their own gate, and I don't have a remote
 for the community one. They go up often, and whenever I want to join them *after* they've already
-arrived, someone has to walk a long way down just to let me in. Being able to copy that remote and
+arrived, someone has to walk a long way down just to let me in, sometimes even at night. Being able to copy that remote and
 carry a clone would save everyone the hike.
 
-Same story at my partner's grandmother's place: sometimes there's no cell signal out there, so
+Same story at my wife's grandmother's place: sometimes there's no cell signal out there, so
 "text us and we'll open the gate" simply doesn't work once you're standing at it. A clone in my
 pocket solves a real, boring, everyday problem.
 
@@ -44,7 +44,7 @@ pocket solves a real, boring, everyday problem.
 > simple. This whole post is me testing on my own gear and my own family's access, with consent.
 > Do the same.
 
-With that out of the way — here's how the first round of testing went across three of the radios.
+With that out of the way, here's how the first round of testing went across three of the radios.
 
 ## Test 1 — Sub-GHz RF (the CC1101)
 
@@ -54,7 +54,7 @@ in the 300–928 MHz band, and the T-Embed can scan those ranges, capture a sign
 ![The RF band selector: 300–348, 387–464 and 779–928 MHz, plus fixed and all-range modes](images/rf-ranges.jpg)
 
 For my first test I used the **remote for my parents' garage**. You drop into *Scan/Copy*, pick a
-frequency range (or a fixed frequency), and hold the remote near the device while pressing its
+frequency range (in my experience, is best to use a fixed frequency), and hold the remote near the device while pressing its
 button. The T-Embed listens for a signal to lock onto and record.
 
 ![RF Scan Copy mode listening while I press the remote](images/rf-capture.gif)
@@ -63,13 +63,11 @@ button. The T-Embed listens for a signal to lock onto and record.
 
 - **Fixed-code remotes** — common on simpler community and property gates — send the *same* code
   every time. Capture once, replay forever. These are the ones a tool like this can genuinely clone.
-- **Rolling-code remotes** — like most modern garage openers — change the code on every press. You
+- **Rolling-code remotes** — most modern garage openers change the code on every press. You
   can record a transmission, but replaying it won't work, because the receiver has already moved on.
   That's the whole point of rolling codes, and it's a good thing.
 
-So the garage test was more of a "learn the workflow" exercise than a successful clone. The real
-target — the community gate — is exactly the kind of fixed-code system this shines on, and that's
-the next field test (with permission, on a gate my family uses).
+Luckily, both controllers tested seem to be old tech, exactly the kind of fixed-code system this shines on. 
 
 ## Test 2 — RFID / NFC
 
@@ -80,7 +78,7 @@ very different cards at it.
 
 ![Tag-O-Matic failing to read a secured hotel card: "Failed reading data blocks"](images/rfid-fail.gif)
 
-*"Failed reading data blocks."* That's not a bug — it's the card's security doing its job. The data
+*"Failed reading data blocks."* That's not a bug, it's the card's security doing its job. The data
 sectors are protected with keys the reader doesn't have, so it can see the card exists but can't
 pull the contents. Exactly what you'd want from a card that unlocks a room.
 
@@ -89,11 +87,10 @@ pull the contents. Exactly what you'd want from a card that unlocks a room.
 ![Tag-O-Matic reading a blank tag: "Reading data blocks..."](images/rfid-read.gif)
 
 An unprotected tag reads instantly, blocks and all. Next on my list is testing whether the T-Embed
-can *write* to one of these — though I'll admit I don't yet have a use for that. Sometimes you learn
+can *write* to one of these, though I'll admit I don't yet have a use for that. Sometimes you learn
 the capability first and find the reason later.
 
 The takeaway: the reader isn't magic. A well-secured card stays secured; an open tag is an open book.
-The difference is entirely in how the card was provisioned.
 
 ## Test 3 — Wi-Fi handshake capture (my favorite)
 
@@ -109,14 +106,14 @@ workflow end to end.
 
 ### A quick word on the deauth process
 
-To crack a WPA/WPA2 password offline you first need to capture the **4-way handshake** — the short
+To crack a WPA/WPA2 password offline you first need to capture the **4-way handshake**, the short
 exchange (EAPOL messages) a device and the router perform when the device *joins* the network. The
 problem: that only happens at connection time, and you can't just wait around forever.
 
 Enter the **deauthentication ("deauth") attack**. In WPA2, the management frames that tell a client
-"you've been disconnected" are **not authenticated** — anyone can forge them. So the attacker sends
+"you've been disconnected" are **not authenticated**, anyone can forge them. So the attacker sends
 spoofed deauth frames that look like they came from the router, kicking a connected device off the
-network. The device, being helpful, immediately tries to **reconnect** — and *that's* when it
+network. The device, being helpful, immediately tries to **reconnect**, and *that's* when it
 performs the handshake again, right in front of your capturing radio.
 
 In short: **deauth to force a reconnect → capture the handshake → crack it offline.** You never need
@@ -146,7 +143,7 @@ Status: CAPTURED!
 Deauth sent: 20
 ```
 
-All four EAPOL messages — a complete handshake, saved to a `.pcap` file. That's the hard part done.
+All four EAPOL messages, a complete handshake, saved to a `.pcap` file. That's the hard part done.
 
 ### Cracking it
 
@@ -169,11 +166,11 @@ random one turns "offline crack" into "offline wait a few million years."
 ## What's next
 
 The three radios were only the beginning. The thing that keeps pulling me back to the T-Embed is
-that it's **programmable** — it's not a fixed-function appliance, it's a platform you can build on.
+that it's **programmable**, it's not a fixed-function appliance, it's a platform you can build on.
 
 So there's a project brewing. I want to add a **GPS antenna** and write a **listening mode** that
-watches the probe requests from devices nearby — the little "is my network here?" calls phones
-broadcast — and analyzes which known networks they're looking for. Wardriving, but for the devices
+watches the probe requests from devices nearby, the little "is my network here?" calls phones
+broadcast, and analyzes which known networks they're looking for. Wardriving, but for the devices
 instead of the access points.
 
 More on that in a future post. For now: one gadget, three radios, and a much better feel for how

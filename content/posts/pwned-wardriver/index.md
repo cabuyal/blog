@@ -257,7 +257,7 @@ made the feature worth building.
   neighborhood and made the design calls (like refusing to guess "WEP"). The assistant sped up
   reading, explaining and writing code.
 - **Build the feature you actually want.** The most useful part of this device is now the part that
-  wasn't or maybe wasn't working in the original repo.
+  wasn't, or maybe wasn't working in the original repo.
 
 Thanks to the PWNED 0x08 organizers and the workshop instructor for the project that started all of
 this. See you at the next one, hopefully with a working laptop this time.
